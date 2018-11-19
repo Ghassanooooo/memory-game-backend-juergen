@@ -32,6 +32,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/',(req,res)=>{
+  res.json({msg:'Hallo team :)'})
+})
+
 
 
 // all errors handle middleware
