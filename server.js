@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 
 const keys = require("./config/keys");
 
+const user = require("./routes/user");
+
 
 const app = express();
 
@@ -32,9 +34,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/',(req,res)=>{
-  res.json({msg:'Hallo team :)'})
-})
+app.use('/user',user)
 
 
 
