@@ -4,9 +4,16 @@ var jwt = require("jsonwebtoken");
 const router = express.Router();
 const User = require("../models/User");
 const keys = require("../config/keys");
+const { validationResult } = require("express-validator/check");
+const validation = require("../validation/userValidation");
 
-router.post("/signup", async (req, res) => {
+router.post("/signup",validation.signup, async (req, res) => {
   const { username, email, password } = req.body;
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ error: errors.array() });
+  }
   const hashedPassword = await bcrypt.hash(password, 12);
   if (hashedPassword) {
     return new User({
@@ -17,13 +24,18 @@ router.post("/signup", async (req, res) => {
       if (err) {
         return res.status(422).json({ error: err });
       }
+      
       return res.status(201).json(userdata);
     });
   }
 });
 
-router.post("/login", async (req, res, next) => {
-  const { email } = req.body;
+router.post("/login",validation.login, async (req, res, next) => {
+    const { email } = req.body;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ error: errors.array() });
+  }
   try {
     const user = await User.findOne({ email });
     if (user) {
