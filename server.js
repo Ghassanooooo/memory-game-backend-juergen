@@ -12,7 +12,7 @@ mongoose
     keys.mongoURI,
     { useNewUrlParser: true }
   )
-  .then(() => console.log("mongodb connected"))
+  .then(() => console.log("mongodb connected!"))
   .catch(err => {
     throw new Error(err);
   });
