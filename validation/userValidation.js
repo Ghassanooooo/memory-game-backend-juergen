@@ -31,7 +31,7 @@ exports.signup = [
   body("confirmPassword")
     .custom((value, { req }) => {
       if (value !== req.body.password) {
-        throw new Error("the password is not confirm");
+        throw new Error("the password is not confirmed");
       }
       return true;
     })
