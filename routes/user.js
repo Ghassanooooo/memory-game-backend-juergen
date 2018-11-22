@@ -41,7 +41,7 @@ router.post("/login",validation.login, async (req, res, next) => {
     if (user) {
       const expirationDate = 2592000000;
       const token = jwt.sign(
-        { email: user.email, id: user._id.toString(), admin: user.admin },
+        {username:user.username, email: user.email, id: user._id.toString(), admin: user.admin },
         keys.jwtKey,
         { expiresIn: expirationDate }
       );
