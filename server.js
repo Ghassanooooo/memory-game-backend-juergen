@@ -1,11 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-
 const keys = require("./config/keys");
-
+const path = require("path");
 const user = require("./routes/user");
-
 
 const app = express();
 
@@ -18,7 +16,7 @@ mongoose
   .catch(err => {
     throw new Error(err);
   });
-
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(function(req, res, next) {
@@ -34,9 +32,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/user',user)
-
-
+app.use("/user", user);
 
 // all errors handle middleware
 app.use((error, req, res, next) => {
