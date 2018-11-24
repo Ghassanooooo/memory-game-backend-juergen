@@ -16,7 +16,13 @@ const UserSchema = new Schema({
     maxlength: 100
   },
   avatar: {
-    type: String
+    type: String,
+    default:
+      "https://banner2.kisspng.com/20180410/bbw/kisspng-avatar-user-medicine-surgery-patient-avatar-5acc9f7a7cb983.0104600115233596105109.jpg"
+  },
+  ava: {
+    type: Boolean,
+    default: false
   },
   password: {
     type: String,
