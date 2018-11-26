@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const keys = require("./config/keys");
 const path = require("path");
 const user = require("./routes/user");
+const game = require("./routes/game");
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use(function(req, res, next) {
 });
 
 app.use("/user", user);
+app.use("/game", game);
 
 // all errors handle middleware
 app.use((error, req, res, next) => {
