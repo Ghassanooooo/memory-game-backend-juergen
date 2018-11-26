@@ -67,7 +67,7 @@ router.post("/login", validation.login, async (req, res, next) => {
 });
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./uploads/avatars/");
+    cb(null, "./uploads/avatars");
   },
   filename: (req, file, cb) => {
     cb(null, uuidv1() + "-" + file.originalname);
@@ -88,12 +88,7 @@ const upload = multer({
   storage,
   fileFilter
 });
-// var filePath = path.join(
-//   __dirname,
-//   "uploads",
-//   "avatars",
-//   req.file.filename
-// );
+
 router.post("/avatar/:id", upload.single("avatar"), (req, res) => {
   User.findById(req.params.id).then(user => {
     if (!user) {
