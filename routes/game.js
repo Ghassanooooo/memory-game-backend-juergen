@@ -36,13 +36,20 @@ const storage = multer.diskStorage({
 
 router.post("/game-data/:id",upload.array('gameImgs',5), (req, res) => {
 if(req.files && req.files.length === 5){
-   // res.json(req.files)
+
+  
     const imgsUrl=[]
     req.files.map(Url=>{
         imgsUrl.push(`http://localhost:5000/uploads/game/${Url.filename}`)
     })
     if(imgsUrl.length === 5){
-      return  res.json(imgsUrl)   
+       new Game ({
+        user:req.params.id,
+        imgsGame:imgsUrl
+       }).save((err,data)=>{
+           res.json(data)
+       })
+
     }
 }
 
