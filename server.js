@@ -38,7 +38,8 @@ app.use("/game", game);
 
 // all errors handle middleware
 app.use((error, req, res, next) => {
-  return res.status(error.httpStateCode).json(error);
+  if (!error.httpStateCode) console.error(error)
+  return res.status(error.httpStateCode || 500).json(error);
 });
 
 const PORT = process.env.PORT || 5000;
