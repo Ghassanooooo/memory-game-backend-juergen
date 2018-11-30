@@ -65,7 +65,7 @@ router.post("/game-data/:id", upload.array("gameImgs", 8), (req, res) => {
         req.files.map(Url => {
           imgsUrl.push({
             cardName: `${Url.filename}`,
-            img: `http://localhost:5000/uploads/game/${req.params.id}/${
+            img: `https://memory-game-7.herokuapp.com/uploads/game/${req.params.id}/${
               Url.filename
             }`
           });
@@ -81,7 +81,7 @@ router.post("/game-data/:id", upload.array("gameImgs", 8), (req, res) => {
           // imgsUrl.push(`http://localhost:5000/uploads/game/${Url.filename}`)
           imgsUrl.push({
             cardName: `${Url.filename}`,
-            img: `http://localhost:5000/uploads/game/${req.params.id}/${
+            img: `https://memory-game-7.herokuapp.com/uploads/game/${req.params.id}/${
               Url.filename
             }`
           });

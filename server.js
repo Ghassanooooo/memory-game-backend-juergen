@@ -5,7 +5,6 @@ const keys = require("./config/keys");
 const path = require("path");
 const user = require("./routes/user");
 const game = require("./routes/game");
-
 const app = express();
 
 mongoose
