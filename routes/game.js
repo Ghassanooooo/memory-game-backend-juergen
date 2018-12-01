@@ -14,7 +14,7 @@ router.get("/:id", (req, res) => {
       if (game) {
         return res.json(game);
       } else {
-        return res.json([]);
+        return res.json(null);
       }
     })
     .catch(e => {
@@ -45,7 +45,7 @@ const fileFilter = (req, file, cb) => {
     file.mimetype === "image/jpg" ||
     file.mimetype === "image/png" ||
     file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/svg" 
+    file.mimetype === "image/svg"
   ) {
     cb(null, true);
   } else {
@@ -65,9 +65,9 @@ router.post("/game-data/:id", upload.array("gameImgs", 8), (req, res) => {
         req.files.map(Url => {
           imgsUrl.push({
             cardName: `${Url.filename}`,
-            img: `https://memory-game-7.herokuapp.com/uploads/game/${req.params.id}/${
-              Url.filename
-            }`
+            img: `https://memory-game-7.herokuapp.com/uploads/game/${
+              req.params.id
+            }/${Url.filename}`
           });
         });
         if (imgsUrl.length === 8) {
@@ -81,9 +81,9 @@ router.post("/game-data/:id", upload.array("gameImgs", 8), (req, res) => {
           // imgsUrl.push(`http://localhost:5000/uploads/game/${Url.filename}`)
           imgsUrl.push({
             cardName: `${Url.filename}`,
-            img: `https://memory-game-7.herokuapp.com/uploads/game/${req.params.id}/${
-              Url.filename
-            }`
+            img: `https://memory-game-7.herokuapp.com/uploads/game/${
+              req.params.id
+            }/${Url.filename}`
           });
         });
         if (imgsUrl.length === 8) {
