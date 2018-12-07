@@ -57,41 +57,50 @@ const upload = multer({
   fileFilter
 });
 
-router.post("/game-data/:id", upload.array("gameImgs", 8), (req, res) => {
-  if (req.files && req.files.length === 8) {
+router.post("/game-data/:id/:gamesize", upload.array("gameImgs"), (req, res) => {
+console.log(req.params);
+console.log(req.files);
+
+  if (req.files && req.files.length == req.params.gamesize) {
     Game.findOne({ user: req.params.id }).then(game => {
       if (game) {
         const imgsUrl = [];
         req.files.map(Url => {
           imgsUrl.push({
             cardName: `${Url.filename}`,
-            img: `https://memory-game-7.herokuapp.com/uploads/game/${
+        //    img: `https://memory-game-7.herokuapp.com/uploads/game/${
+            img: `http://localhost:5000/uploads/game/${
               req.params.id
             }/${Url.filename}`
           });
         });
-        if (imgsUrl.length === 8) {
+        if (imgsUrl.length == req.params.gamesize) {
           game.imgsGame = imgsUrl;
+          game.gamesize = req.params.gamesize;
           game.save();
           res.json(game);
+          console.log(game)
         }
       } else {
         const imgsUrl = [];
         req.files.map(Url => {
-          // imgsUrl.push(`http://localhost:5000/uploads/game/${Url.filename}`)
+         imgsUrl.push(`http://localhost:5000/uploads/game/${Url.filename}`)
           imgsUrl.push({
             cardName: `${Url.filename}`,
-            img: `https://memory-game-7.herokuapp.com/uploads/game/${
+          //  img: `https://memory-game-7.herokuapp.com/uploads/game/${
+             img: `http://localhost:5000/uploads/game/${
               req.params.id
             }/${Url.filename}`
           });
         });
-        if (imgsUrl.length === 8) {
+        if (imgsUrl.length == req.params.gamesize) {
           return new Game({
             user: req.params.id,
+            gamesize: req.params.gamesize,
             imgsGame: imgsUrl
           }).save((err, data) => {
             return res.json(data);
+            console.log(data)
           });
         }
       }
