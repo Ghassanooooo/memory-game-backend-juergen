@@ -78,29 +78,30 @@ console.log(req.files);
           game.imgsGame = imgsUrl;
           game.gamesize = req.params.gamesize;
           game.save();
-          res.json(game);
-          console.log(game)
+        return  res.json(game);
+          console.log('data from DB change',game)
         }
       } else {
         const imgsUrl = [];
         req.files.map(Url => {
-         imgsUrl.push(`http://localhost:5000/uploads/game/${Url.filename}`)
+        // imgsUrl.push(`http://localhost:5000/uploads/game/${Url.filename}`)
           imgsUrl.push({
             cardName: `${Url.filename}`,
           //  img: `https://memory-game-7.herokuapp.com/uploads/game/${
-             img: `http://localhost:5000/uploads/game/${
-              req.params.id
-            }/${Url.filename}`
+             img: `http://localhost:5000/uploads/game/${req.params.id}/${Url.filename}`
           });
         });
+      console.log('imgs url fixed',imgsUrl);
         if (imgsUrl.length == req.params.gamesize) {
+
+
           return new Game({
             user: req.params.id,
             gamesize: req.params.gamesize,
             imgsGame: imgsUrl
           }).save((err, data) => {
             return res.json(data);
-            console.log(data)
+            console.log('data from DB',data)
           });
         }
       }
