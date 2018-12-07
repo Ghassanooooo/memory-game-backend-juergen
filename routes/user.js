@@ -29,7 +29,20 @@ router.post("/signup", validation.signup, async (req, res) => {
         return res.status(422).json({ error: err });
       }
 
-      return res.status(201).json(userdata);
+      const expirationDate = 2592000000;
+      const token = jwt.sign(
+        {
+          username: userdata.username,
+          email: userdata.email,
+          id: userdata._id.toString(),
+          admin: userdata.admin,
+          avatar: userdata.avatar
+        },
+        keys.jwtKey,
+        { expiresIn: expirationDate }
+      );
+
+      return res.status(201).json(token);
     });
   }
 });

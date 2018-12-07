@@ -7,6 +7,10 @@ const GameSchema = new Schema({
     ref: "users",
     required: true
   },
+  gamesize: {
+    type: String,
+    required: true
+  },
   imgsGame: [
     {
       cardName: {
