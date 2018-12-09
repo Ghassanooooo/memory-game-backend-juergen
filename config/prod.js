@@ -1,5 +1,6 @@
 module.exports = {
   mongoURI: process.env.MONGO_URL,
   jwtKey: process.env.JWT_KEY,
-  baseURL: process.env.BACE_URL
+  baseURL: process.env.BACE_URL,
+  sendgrid: process.env.SEND_GRID
 };
