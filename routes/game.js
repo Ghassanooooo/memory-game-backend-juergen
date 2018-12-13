@@ -22,7 +22,7 @@ router.post("/email", (req, res) => {
   console.log(req.body);
   transporter.sendMail({
     to: req.body.email,
-    from: `${req.body.name}@memory-game.com`,
+    from: `noreply@memory-game.com`,
     subject: `Customise ${req.body.name}'s Memory Game`,
     html: `<div>
     <h1 style='color:red'>Please Try My Customise Memory Game I Had Created ! 🤩</h1>
@@ -30,9 +30,9 @@ router.post("/email", (req, res) => {
       req.body.url
     } style='border:1px solid #000; text-decoration: none;padding:5px; color:#fff;background:blue; margen-bottom:10px'>PLAY NOW</a> <br /> <br />
   <p>
-    You can also visting the Memry game website to create your Customise game: 
+    You can also visting the Memry game website to create your Customise game:
   <a href='https://memory-game-fb235.firebaseapp.com' >Click Here</a>
-    
+
   </p>
          </div>
     `
