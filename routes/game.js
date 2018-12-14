@@ -24,25 +24,23 @@ router.post("/email", (req, res) => {
     to: req.body.email,
     from: `noreply@memory-game.com`,
     subject: `Customise ${req.body.name}'s Memory Game`,
-  //   html: `<div>
-  //   <h1 style='color:red'>Please Try My Customise Memory Game I Had Created ! 🤩</h1>
-  //   <a href=${
-  //     req.body.url
-  //   } style='border:1px solid #000; text-decoration: none;padding:5px; color:#fff;background:blue; margen-bottom:10px'>PLAY NOW</a> <br /> <br />
-  // <p>
-  //   You can also visit the <strong>Memory Game Website</strong> to create your own custom game:
-  // <a href='https://memory-game-fb235.firebaseapp.com' >Click Here</a>
-  //
-  // </p>
-  //        </div>
-  //   `
-  //
-  html: `<div style='background-color: #DDF2F3; display:inline-flex; flex-direction: column; align-items: baseline'>
+    //   html: `<div>
+    //   <h1 style='color:red'>Please Try My Customise Memory Game I Had Created ! 🤩</h1>
+    //   <a href=${
+    //     req.body.url
+    //   } style='border:1px solid #000; text-decoration: none;padding:5px; color:#fff;background:blue; margen-bottom:10px'>PLAY NOW</a> <br /> <br />
+    // <p>
+    //   You can also visit the <strong>Memory Game Website</strong> to create your own custom game:
+    // <a href='https://memory-game-fb235.firebaseapp.com' >Click Here</a>
+    //
+    // </p>
+    //        </div>
+    //   `
+    //
+    html: `<div style='background-color: #DDF2F3; display:inline-flex; flex-direction: column; align-items: baseline'>
 
     <h1 style='color:#7FB670'>Please Try the Memory Game I Created !</h1>
-          <a href=${
-            req.body.url
-          } style='border:2px
+          <a href=${req.body.url} style='border:2px
                    dotted #000;
                    border-radius: 10px;
                    text-decoration: none;
@@ -54,13 +52,13 @@ router.post("/email", (req, res) => {
 
       <p>
           You can also visit the <strong>Memory Game Website</strong> to create your own custom game:
-        <a href=https://memory-game-fb235.firebaseapp.com
+        <a href='https://memory-game-fb235.firebaseapp.com'
                    style='border:2px
                    dotted #000;
                    border-radius: 10px;
                    text-decoration: none;
                    padding:5px; color:#000;
-                   background:#8BA3C9>Click Here</a>
+                   background:#8BA3C9'>Click Here</a>
 
         </p>
 
