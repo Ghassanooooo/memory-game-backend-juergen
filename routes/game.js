@@ -37,7 +37,7 @@ router.post("/email", (req, res) => {
   //        </div>
   //   `
   //
-  html: '<div style='background-color: #DDF2F3; display:inline-flex; flex-direction: column; align-items: baseline'>
+  html: `<div style='background-color: #DDF2F3; display:inline-flex; flex-direction: column; align-items: baseline'>
 
     <h1 style='color:#7FB670'>Please Try the Memory Game I Created !</h1>
           <a href=${
@@ -54,16 +54,17 @@ router.post("/email", (req, res) => {
 
       <p>
           You can also visit the <strong>Memory Game Website</strong> to create your own custom game:
-        <a href='https://memory-game-fb235.firebaseapp.com' style='border:2px
+        <a href=https://memory-game-fb235.firebaseapp.com
+                   style='border:2px
                    dotted #000;
                    border-radius: 10px;
                    text-decoration: none;
                    padding:5px; color:#000;
-                   background:#8BA3C9;' >Click Here</a>
+                   background:#8BA3C9>Click Here</a>
 
         </p>
 
-</div>'
+</div>`
   });
   res.json({ send: true });
 });
