@@ -37,7 +37,7 @@ router.post("/email", (req, res) => {
     //        </div>
     //   `
     //
-    html: `<div style='background-color: #DDF2F3; display:inline-flex; flex-direction: column; align-items: baseline'>
+    html: `<div style='background-color: #DDF2F3; padding:10px;'>
 
     <h1 style='color:#7FB670'>Please Try the Memory Game I Created !</h1>
           <a href=${req.body.url} style='border:2px
